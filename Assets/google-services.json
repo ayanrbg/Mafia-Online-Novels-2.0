@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "850279515963",
+    "project_id": "mafia-novels-aa494",
+    "storage_bucket": "mafia-novels-aa494.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850279515963:android:e40bd1ebcbea1c68bcd91e",
+        "android_client_info": {
+          "package_name": "com.TokenGC.MafiaNovels"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850279515963-3j4pltq8nr2onami5991besgcp0e8nc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.TokenGC.MafiaNovels",
+            "certificate_hash": "278b5bb54e1fccb500a99bcdd63b5260ea4803df"
+          }
+        },
+        {
+          "client_id": "850279515963-ctle51nm1jqjlnuedq2nrl8siru68ptd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2wAjzcyO-3-8pVwecqivbsVd4dv9Ez58"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850279515963-ctle51nm1jqjlnuedq2nrl8siru68ptd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
