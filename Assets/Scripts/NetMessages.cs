@@ -114,7 +114,11 @@ public class LoginSuccessResponse : BaseMessage
 {
     public string token;
 }
-
+[Serializable]
+public class AuthResponse : BaseMessage
+{
+    public string token;
+}
 [Serializable]
 public class AuthSuccessResponse : BaseMessage
 {

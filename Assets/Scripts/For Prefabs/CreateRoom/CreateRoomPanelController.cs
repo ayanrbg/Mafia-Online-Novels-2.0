@@ -96,6 +96,8 @@ public class CreateRoomPanelController : MonoBehaviour
 
         CreateRoomRequest request = new CreateRoomRequest
         {
+            type = "create_room",
+            token = WebSocketManager.Instance.userToken,
             name = roomNameInput.text,
             min_players = playersSlider.MinPlayers,
             max_players = playersSlider.MaxPlayers,

@@ -247,16 +247,15 @@ public class GameManager : MonoBehaviour
                 phaseHandlerScript.SetDayTimer(phaseUpdateResponse.duration);
                 ui.EnableDayPlayerPanel();
                 ui.DisableVoteNightPlayersPanel();
-
                 ui.SetChatBlockPanel(false);
-
+                ui.PlayDayStateAnim();
                 chatManager.AddDaySeparator();
                 break;
             case "night":
                 phaseHandlerScript.SetNightTimer(phaseUpdateResponse.duration);
                 ui.DisableVoteDayPlayersPanel();
                 ui.SetChatBlockPanel(true);
-
+                ui.PlayNightStateAnim();
                 chatManager.AddNightSeparator();
                 
                 break;
@@ -265,7 +264,7 @@ public class GameManager : MonoBehaviour
                 ui.DisableDayPlayerPanel();
                 ui.DisableVoteNightPlayersPanel();
                 phaseHandlerScript.SetVoteTimer(phaseUpdateResponse.duration);
-
+                ui.PlayVoteStateAnim();
                 ui.SetChatBlockPanel(false);
                 break;
         }
@@ -441,12 +440,12 @@ public class GameManager : MonoBehaviour
         
         if (response.winner == "mafia")
         {
-            ShowRoleMafia(redYourRoleText, "Победила мафия!");
+            ui.PlayMafiaWinAnim();
             chatManager.AddSystemMessage("Мафия побеждает");
         }
         else
         {
-            ShowRoleCitizen(blueYourRoleText, "Победили мирные!");
+            ui.PlayCitizenWinAnim();
             chatManager.AddSystemMessage("Мирные побеждают");
         }
     }

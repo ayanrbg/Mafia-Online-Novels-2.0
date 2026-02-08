@@ -173,13 +173,7 @@
             {
                 auth.SignOut();
             }
-
-            // 3️⃣ WebSocket logout (если есть)
-            if (WebSocketManager.Instance != null)
-            {
-                WebSocketManager.Instance.Logout();
-            }
-
+    
             Debug.Log("GOOGLE SIGN OUT COMPLETE");
         }
 

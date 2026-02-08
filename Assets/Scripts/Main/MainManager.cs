@@ -108,7 +108,6 @@ public class MainManager : MonoBehaviour
         WebSocketManager.Instance.Logout();
     }
 
-
     #endregion
 
 }

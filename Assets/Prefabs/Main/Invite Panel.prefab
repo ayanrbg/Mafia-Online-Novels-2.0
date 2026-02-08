@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 7362477344683294384}
   - component: {fileID: 2041349688372312269}
   - component: {fileID: 6725247026792191341}
-  - component: {fileID: 222056847834360634}
+  - component: {fileID: 495359226018188062}
   m_Layer: 5
   m_Name: button-accept
   m_TagString: Untagged
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &222056847834360634
+--- !u!114 &495359226018188062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -483,7 +483,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6725247026792191341}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5823908743435734845}
+        m_TargetAssemblyTypeName: InvitePanelController, Assembly-CSharp
+        m_MethodName: OnAccept
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1494211060396769046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,7 +1895,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7793161557433295510}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1914,8 +1926,6 @@ MonoBehaviour:
   panel: {fileID: 7576530516039048690}
   glow: {fileID: 2876734504200234483}
   avatarImage: {fileID: 1546470929118174367}
-  buttonAccept: {fileID: 222056847834360634}
-  buttonDecline: {fileID: 3809871118124651595}
   usernameText: {fileID: 6261548951944560688}
   roomNameText: {fileID: 3259577644737666132}
   roomLevelText: {fileID: 5620224614959406977}
@@ -1945,7 +1955,7 @@ GameObject:
   - component: {fileID: 8890456218856366478}
   - component: {fileID: 7603467630723856452}
   - component: {fileID: 332360366549697074}
-  - component: {fileID: 3809871118124651595}
+  - component: {fileID: 2347287088157587826}
   m_Layer: 5
   m_Name: button-decline
   m_TagString: Untagged
@@ -2011,7 +2021,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3809871118124651595
+--- !u!114 &2347287088157587826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2054,4 +2064,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 332360366549697074}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5823908743435734845}
+        m_TargetAssemblyTypeName: InvitePanelController, Assembly-CSharp
+        m_MethodName: OnDecline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

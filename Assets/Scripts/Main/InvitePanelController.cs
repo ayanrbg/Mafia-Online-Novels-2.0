@@ -11,9 +11,7 @@ public class InvitePanelController : MonoBehaviour
     [SerializeField] private RectTransform panel;
     [SerializeField] private RectTransform glow;
     [SerializeField] private Image avatarImage;
-    [SerializeField] private Button buttonAccept;
-    [SerializeField] private Button buttonDecline;
-
+    
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI usernameText;
     [SerializeField] private TextMeshProUGUI roomNameText;
@@ -21,7 +19,7 @@ public class InvitePanelController : MonoBehaviour
 
     [Header("Roles Icons")]
     [SerializeField] private RoleGameObject[] roleIcons;
-    // RoleIconView — маленький скрипт, покажу ниже
+    // RoleIconView пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
     [Header("Animation")]
     [SerializeField] private float duration = 0.35f;
@@ -32,27 +30,7 @@ public class InvitePanelController : MonoBehaviour
     private bool isOpen;
 
     // ===================== LIFECYCLE =====================
-
-    private void Awake()
-    {
-        buttonAccept.onClick.AddListener(OnAccept);
-        buttonDecline.onClick.AddListener(OnDecline);
-        shownPos = panel.anchoredPosition;
-        hiddenPos = shownPos + new Vector2(0, -500f);
-
-        panel.anchoredPosition = hiddenPos;
-        panel.localScale = Vector3.one * 0.9f;
-
-        overlay.alpha = 0f;
-        overlay.blocksRaycasts = false;
-
-        gameObject.SetActive(false);
-
-        // glow вращается всегда
-        glow.DORotate(new Vector3(0, 0, -360f), 10f, RotateMode.FastBeyond360)
-            .SetLoops(-1)
-            .SetEase(Ease.Linear);
-    }
+    
 
     // ===================== PUBLIC API =====================
 
@@ -97,7 +75,22 @@ public class InvitePanelController : MonoBehaviour
     {
         if (isOpen) return;
         isOpen = true;
+        
+        shownPos = panel.anchoredPosition;
+        hiddenPos = shownPos + new Vector2(0, -500f);
 
+        panel.anchoredPosition = hiddenPos;
+        panel.localScale = Vector3.one * 0.9f;
+
+        overlay.alpha = 0f;
+        overlay.blocksRaycasts = false;
+
+        gameObject.SetActive(false);
+
+        // glow пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+        glow.DORotate(new Vector3(0, 0, -360f), 10f, RotateMode.FastBeyond360)
+            .SetLoops(-1)
+            .SetEase(Ease.Linear);
         gameObject.SetActive(true);
         overlay.blocksRaycasts = true;
 
@@ -129,13 +122,11 @@ public class InvitePanelController : MonoBehaviour
     public void OnAccept()
     {
         WebSocketManager.Instance.SendJoinRoom(roomId, "");
-        Debug.Log(roomId + " - Отправил");
         Close();
     }
 
     public void OnDecline()
     {
-        Debug.Log("ZAKRYT'");
         Close();
     }
 }

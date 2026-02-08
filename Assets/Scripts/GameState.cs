@@ -52,6 +52,8 @@ public class GameState : MonoBehaviour
     public void UpdateToken(string newToken)
     {
         UserToken = newToken;
+        
+        PlayerPrefs.SetString("TOKEN", newToken);
         PlayerPrefs.Save();
     }
 

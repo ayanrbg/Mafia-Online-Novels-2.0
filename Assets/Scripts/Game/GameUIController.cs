@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class GameUIController : MonoBehaviour
 {
+    [Header("Scripts")]
+    [SerializeField] private StateAnimation nightStateAnimation;
+    [SerializeField] private StateAnimation voteStateAnimation;
+    [SerializeField] private StateAnimation dayStateAnimation;
+    [SerializeField] private StateAnimation mafiaWinAnimation;
+    [SerializeField] private StateAnimation citizenWinAnimation;
+    
     [Header("Top Info")]
     [SerializeField] public TextMeshProUGUI statusText;
     [SerializeField] private TextMeshProUGUI roomNameText;
@@ -119,6 +126,28 @@ public class GameUIController : MonoBehaviour
     {
         dayPlayersPanel.gameObject.SetActive(false);
         dayPlayersPanel.Close();
+    }
+
+    public void PlayNightStateAnim()
+    {
+        nightStateAnimation.Play();
+    }
+    public void PlayVoteStateAnim()
+    {
+        voteStateAnimation.Play();
+    }
+    public void PlayDayStateAnim()
+    {
+        dayStateAnimation.Play();
+    }
+
+    public void PlayMafiaWinAnim()
+    {
+        mafiaWinAnimation.Play();
+    }
+    public void PlayCitizenWinAnim()
+    {
+        citizenWinAnimation.Play();
     }
     public void ShowMafiaVote()
     {

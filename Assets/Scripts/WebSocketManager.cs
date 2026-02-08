@@ -4,10 +4,11 @@ using System.Text;
 public class WebSocketManager : MonoBehaviour
 {
     public static WebSocketManager Instance;
-
+    [SerializeField] private LoginWithGoogle loginWithGoogle;
+    
     private NativeWebSocket.WebSocket ws;
 
-    private string userToken => GameState.Instance.UserToken;
+    public string userToken;
     public System.Action OnConnected;
 
 
@@ -46,11 +47,12 @@ public class WebSocketManager : MonoBehaviour
 
         await ws.Connect();
     }
-
+    
     public async void Logout()
     {
+        loginWithGoogle.SignOut();
         Debug.Log("WS LOGOUT START");
-
+        
         // 1️⃣ Закрываем сокет
         if (ws != null)
         {
@@ -129,17 +131,11 @@ public class WebSocketManager : MonoBehaviour
 
     public void SendCreateRoom(CreateRoomRequest req)
     {
-        req.type = "create_room";
-        req.token = userToken;
         Send(req);
     }
     public void SendGetRating()
     {
-        RatingRequest req = new RatingRequest();
-        req.type = "get_rating";
-        req.limit = 25;
-        req.token = userToken;
-        Send(req);
+        Send(new RatingRequest{type = "get_rating",limit = 25 ,token = userToken});
     }
     public void SendGetFriends()
     {
@@ -230,8 +226,8 @@ public class WebSocketManager : MonoBehaviour
     {
         if (ws.State != NativeWebSocket.WebSocketState.Open) return;
         string json = JsonUtility.ToJson(obj);
+        Debug.Log("SENDED: "+json);
         await ws.SendText(json);
-        Debug.Log(obj);
     }
 
     // ================= RECEIVE =================
@@ -261,7 +257,9 @@ public class WebSocketManager : MonoBehaviour
             case "get_rooms_success":
                 HandleGetRooms(json);
                 break;
-
+            case "create_room_failed":
+                HandleJoinRoom(json);
+                break;
             case "create_room_success":
                 HandleJoinRoom(json);
                 break;
@@ -347,19 +345,19 @@ public class WebSocketManager : MonoBehaviour
     {
         var msg = JsonUtility.FromJson<LoginSuccessResponse>(json);
         GameState.Instance.UpdateToken(msg.token);
+        userToken =  msg.token;
         SendAuth(userToken);
     }
     void HandleRegisterSuccess(string json)
     {
         var msg = JsonUtility.FromJson<LoginSuccessResponse>(json);
         GameState.Instance.UpdateToken(msg.token);
+        userToken =  msg.token;
         SendAuth(userToken);
-
     }
     void HandleAuthSuccess(string json)
     {
         var msg = JsonUtility.FromJson<AuthSuccessResponse>(json);
-        GameState.Instance.UpdateToken(msg.token);
         GameState.Instance.SetPlayerProfile(msg);
         EventBus.RaiseProfileUpdated(msg.userData);
         LoadingManager.Instance.LoadMainScene();
