@@ -29,6 +29,7 @@ public class LoadingManager : MonoBehaviour
     public void LoadGameScene() => LoadScene("Game");
     public void LoadMainScene() => LoadScene("Main");
     public void LoadAuthScene() => LoadScene("Auth");
+    public void LoadTutorialScene() => LoadScene("Tutorial");
 
     // ===================== CORE =====================
 

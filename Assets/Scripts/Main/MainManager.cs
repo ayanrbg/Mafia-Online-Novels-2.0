@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,6 +46,17 @@ public class MainManager : MonoBehaviour
         WebSocketManager.Instance.SendGetRating();
         WebSocketManager.Instance.SendGetFriends();
         WebSocketManager.Instance.SendGetUserStats(GameState.Instance.userId);
+
+        if (!PlayerPrefs.HasKey("isFirstEntry"))
+        {
+            StartCoroutine(Tutorial());
+        }
+    }
+
+    IEnumerator Tutorial()
+    {
+        yield return new WaitForSeconds(0.5f);
+        LoadingManager.Instance.LoadTutorialScene();
     }
     private void OnEnable()
     {

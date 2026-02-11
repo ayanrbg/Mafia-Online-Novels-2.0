@@ -6093,6 +6093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loginWithGoogle: {fileID: 0}
+  userToken: 
 --- !u!1 &1773899233
 GameObject:
   m_ObjectHideFlags: 0

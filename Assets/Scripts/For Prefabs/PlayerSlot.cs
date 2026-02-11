@@ -71,6 +71,24 @@ public class PlayerSlot : MonoBehaviour
             counterText.text = "";
         }
     }
+    public void ShowVoteForTutorial(int userId, int voteCount, bool isMafia)
+    {
+        if (isMafia)
+        {
+            labelImageMafia.SetActive(true);
+        }
+
+        if (voteCount > 0)
+        {
+            counterImage.SetActive(true);
+            counterText.text = voteCount.ToString();
+        }
+        else 
+        {
+            counterImage.SetActive(false);
+            counterText.text = "";
+        }
+    }
     
     public void SendNightAction()
     {

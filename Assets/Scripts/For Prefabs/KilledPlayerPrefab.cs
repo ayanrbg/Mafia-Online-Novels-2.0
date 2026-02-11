@@ -30,4 +30,8 @@ public class KilledPlayerPrefab : MonoBehaviour
             }
         }
     }
+    public void SetNickname(string nickname)
+    {
+        usernameText.text = nickname;
+    }
 }
